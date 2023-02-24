@@ -1,13 +1,13 @@
-# This file is generated on https://www.bytebase.com/sql-review-guide#bb.sql-review.dev
+# This file is generated on https://www.bytebase.com/sql-review-guide#bb.sql-review.prod
 # You can use it with the SQL Review Action https://github.com/marketplace/actions/sql-review
-template: bb.sql-review.dev
+template: bb.sql-review.prod
 ruleList:
   - type: engine.mysql.use-innodb # Doc: https://www.bytebase.com/docs/sql-review/review-rules#engine.mysql.use-innodb
     level: ERROR
   - type: table.require-pk # Doc: https://www.bytebase.com/docs/sql-review/review-rules#table.require-pk
     level: ERROR
   - type: table.no-foreign-key # Doc: https://www.bytebase.com/docs/sql-review/review-rules#table.no-foreign-key
-    level: WARNING
+    level: ERROR
   - type: table.drop-naming-convention # Doc: https://www.bytebase.com/docs/sql-review/review-rules#table.drop-naming-convention
     level: ERROR
     payload:
@@ -15,28 +15,28 @@ ruleList:
   - type: table.disallow-partition # Doc: https://www.bytebase.com/docs/sql-review/review-rules#table.disallow-partition
     level: ERROR
   - type: table.comment # Doc: https://www.bytebase.com/docs/sql-review/review-rules#table.comment
-    level: WARNING
+    level: ERROR
     payload:
       required: true
       maxLength: 64
   - type: statement.select.no-select-all # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.select.no-select-all
-    level: WARNING
+    level: ERROR
   - type: statement.where.require # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.where.require
-    level: WARNING
+    level: ERROR
   - type: statement.where.no-leading-wildcard-like # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.where.no-leading-wildcard-like
-    level: WARNING
+    level: ERROR
   - type: statement.disallow-commit # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.disallow-commit
-    level: WARNING
+    level: ERROR
   - type: statement.disallow-limit # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.disallow-limit
-    level: WARNING
+    level: ERROR
   - type: statement.disallow-order-by # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.disallow-order-by
-    level: WARNING
+    level: ERROR
   - type: statement.merge-alter-table # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.merge-alter-table
-    level: WARNING
+    level: ERROR
   - type: statement.insert.must-specify-column # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.insert.must-specify-column
-    level: WARNING
+    level: ERROR
   - type: statement.insert.disallow-order-by-rand # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.insert.disallow-order-by-rand
-    level: WARNING
+    level: ERROR
   - type: statement.insert.row-limit # Doc: https://www.bytebase.com/docs/sql-review/review-rules#statement.insert.row-limit
     level: WARNING
     payload:
@@ -98,7 +98,7 @@ ruleList:
         - creator_id
         - updater_id
   - type: column.type-disallow-list # Doc: https://www.bytebase.com/docs/sql-review/review-rules#column.type-disallow-list
-    level: WARNING
+    level: ERROR
     payload:
       list:
         - JSON
@@ -119,7 +119,7 @@ ruleList:
   - type: column.auto-increment-must-unsigned # Doc: https://www.bytebase.com/docs/sql-review/review-rules#column.auto-increment-must-unsigned
     level: ERROR
   - type: column.comment # Doc: https://www.bytebase.com/docs/sql-review/review-rules#column.comment
-    level: WARNING
+    level: ERROR
     payload:
       required: true
       maxLength: 64
@@ -144,7 +144,7 @@ ruleList:
   - type: index.type-no-blob # Doc: https://www.bytebase.com/docs/sql-review/review-rules#index.type-no-blob
     level: ERROR
   - type: index.pk-type-limit # Doc: https://www.bytebase.com/docs/sql-review/review-rules#index.pk-type-limit
-    level: WARNING
+    level: ERROR
   - type: index.key-number-limit # Doc: https://www.bytebase.com/docs/sql-review/review-rules#index.key-number-limit
     level: WARNING
     payload:
@@ -162,12 +162,12 @@ ruleList:
   - type: index.create-concurrently # Doc: https://www.bytebase.com/docs/sql-review/review-rules#index.create-concurrently
     level: WARNING
   - type: system.charset.allowlist # Doc: https://www.bytebase.com/docs/sql-review/review-rules#system.charset.allowlist
-    level: WARNING
+    level: ERROR
     payload:
       list:
         - utf8mb4
   - type: system.collation.allowlist # Doc: https://www.bytebase.com/docs/sql-review/review-rules#system.collation.allowlist
-    level: WARNING
+    level: ERROR
     payload:
       list:
         - utf8mb4_0900_ai_ci
