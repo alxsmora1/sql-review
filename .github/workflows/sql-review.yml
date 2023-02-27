@@ -15,7 +15,7 @@ jobs:
           sqlfluff_version: "1.4.5"
           sqlfluff_command: "fix" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
-          paths: '${{ github.workspace }}/develop/potgres'
+          paths: '${{ github.workspace }}/develop/postgres'
       - name: 'Show outputs (Optional)'
         shell: bash
         run: |
