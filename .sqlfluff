@@ -1,0 +1,4 @@
+[sqlfluff]
+templater = dbt
+dialect = tsql
+sql_file_exts = .sql
