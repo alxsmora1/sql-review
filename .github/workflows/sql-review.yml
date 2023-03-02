@@ -11,11 +11,13 @@ jobs:
         id: lint-sql
         with:
           github_token: ${{ secrets.github_token }}
+          level: warning
           reporter: github-pr-review
           sqlfluff_version: "1.4.5"
           sqlfluff_command: "fix" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/develop/postgres'
+          dialect: 'tsql'
       - name: 'Show outputs (Optional)'
         shell: bash
         run: |
