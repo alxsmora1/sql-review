@@ -16,6 +16,7 @@ jobs:
           sqlfluff_command: "fix" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/develop/postgres'
+          dialect: 'tsql'
       - name: 'Show outputs (Optional)'
         shell: bash
         run: |
