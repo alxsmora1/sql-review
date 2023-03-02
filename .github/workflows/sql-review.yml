@@ -16,7 +16,7 @@ jobs:
           level: error
           reporter: github-pr-review
           sqlfluff_version: "1.4.5"
-          sqlfluff_command: "fix"
+          sqlfluff_command: "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/develop/postgres'
           dialect: 'tsql'
