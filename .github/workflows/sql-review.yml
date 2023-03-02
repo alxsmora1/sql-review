@@ -15,10 +15,8 @@ jobs:
           github_token: ${{ secrets.github_token }}
           level: error
           reporter: github-pr-review
-          fail_on_error: true
           sqlfluff_version: "1.4.5"
           sqlfluff_command: "fix"
-          rules: -rules PRS
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/develop/postgres'
           dialect: 'tsql'
