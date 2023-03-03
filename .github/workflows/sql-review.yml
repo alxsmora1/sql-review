@@ -28,9 +28,3 @@ jobs:
         run: |
           echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
           echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
-
-      - name: 'Connect to mssql server CMX'
-        shell: pwsh
-        run: .\build.ps1 ci-pr $
-        env:
-          ConnectionStrings__MyConnString: "Server=cxmsynapsedev001.database.windows.net,1433;Initial Catalog=cxmsqldwdev001;User Id=sa;Password=$U$erProcess;"
