@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate SQL
-        uses: zlepper/mssql-validator
+        uses: zlepper/mssql-validator@latest
         with:
           pattern: 'scripts/**/*.sql'
