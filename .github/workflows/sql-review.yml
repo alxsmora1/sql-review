@@ -6,10 +6,11 @@ jobs:
     name: runner / sqlfluff (github-check)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 'Checkout code'
         uses: actions/checkout@v2
 
-      - uses: yu-iskw/action-sqlfluff@v3
+      - name: 'sqlfluff y reviewdog' 
+        uses: yu-iskw/action-sqlfluff@v3
         id: lint-sql
         with:
           github_token: ${{ secrets.github_token }}
