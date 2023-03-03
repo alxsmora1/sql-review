@@ -32,4 +32,4 @@ jobs:
         shell: pwsh
         run: .\build.ps1 ci-pr $
         env:
-          ConnectionStrings__MyConnString: "Server=cxmsynapsedev001.database.windows.net ,1433;Initial Catalog=cxmsqldwdev001;User Id=sa;Password=$U$erProcess;"
+          ConnectionStrings__MyConnString: "Server=cxmsynapsedev001.database.windows.net,1433;Initial Catalog=cxmsqldwdev001;User Id=sa;Password=$U$erProcess;"
