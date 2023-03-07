@@ -1,1 +1,1 @@
-SELECT * FROM t1;
+CREATE TABLE tabx1;
