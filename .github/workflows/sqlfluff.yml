@@ -19,7 +19,7 @@ jobs:
           sqlfluff_version: "1.4.5"
           sqlfluff_command: "fix"
           config: "${{ github.workspace }}/.sqlfluff"
-          paths: '${{ github.workspace }}/develop/postgres'
+          paths: '${{ github.workspace }}/develop/scripts'
           dialect: 'tsql'
           
       - name: 'Show outputs (Optional)'

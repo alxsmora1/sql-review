@@ -11,4 +11,4 @@ jobs:
         with:
           override-file-path: ./sql-review-override.yml
           database-type: POSTGRES
-          file-pattern: ^develop/postgres/.*\.sql$
+          file-pattern: ^develop/scripts/.*\.sql$
