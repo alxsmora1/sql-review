@@ -6,9 +6,9 @@ jobs:
     name: SQL Review
     steps:
       - uses: actions/checkout@v3
-      - name: Check SQL Postgres
+      - name: Check SQL
         uses: bytebase/sql-review-action@main
         with:
           override-file-path: ./sql-review-override.yml
-          database-type: POSTGRES
+          database-type: Snowflake
           file-pattern: ^develop/scripts/.*\.sql$
