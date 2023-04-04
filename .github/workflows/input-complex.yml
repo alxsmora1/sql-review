@@ -6,16 +6,16 @@ on:
         default: 'dir/dir/example/'
         required: false
         type: string
-      files:
+      archivos:
         description: 'Agrega los ficheros o el comodin'
         default: '*'
         required: false
         type: string
 
 jobs:
-  print-username:
+  print-path:
     runs-on: ubuntu-latest
 
     steps:
       - name: Imprime la ruta dada por el usuario
-        run: echo The username is ${{ inputs.username }}
+        run: echo La ruta a ejecutar es ${{ inputs.directorio }} ${{ inputs.archivos }}
