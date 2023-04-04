@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+    inputs:
+      directorio:
+        description: 'Agrega la ruta del directorio con /'
+        default: 'dir/dir/example/'
+        required: false
+        type: string
+      files:
+        description: 'Agrega los ficheros o el comodin'
+        default: '*'
+        required: false
+        type: string
+
+jobs:
+  print-username:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprime la ruta dada por el usuario
+        run: echo The username is ${{ inputs.username }}
