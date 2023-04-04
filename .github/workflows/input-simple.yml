@@ -1,22 +1,16 @@
-name: workflow-input-simple
-
 on:
-  [workflow_dispatch]:
+  workflow_dispatch:
     inputs:
-      name:
-        description: 'File'
-        default: '.'
-        required: true
+      username:
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
+        type: string
 
 jobs:
-  - name: file select
+  print-username:
     runs-on: ubuntu-latest
 
-    env:
-      VALOR_INPUT: ${{ github.event.inputs.name }}
-
     steps:
-    - name: select file and continue
-      run: |
-        echo "Hello ${{ github.event.inputs.name }}"
-        echo "Hello: ${{ env.VALOR_INPUT }}"
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
