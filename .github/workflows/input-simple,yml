@@ -1,7 +1,7 @@
 name: workflow input simple
 
 on:
-  workflow_dispatch:
+  [workflow_dispatch, push]:
     inputs:
       name:
         description: 'File'
