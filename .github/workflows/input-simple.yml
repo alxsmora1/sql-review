@@ -2,8 +2,8 @@ on:
   workflow_dispatch:
     inputs:
       username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
+        description: 'Agrega la ruta del fichero'
+        default: 'dir/dir/example.cs'
         required: false
         type: string
 
@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print the input name to STDOUT
+      - name: Imprime la ruta dada por el usuario
         run: echo The username is ${{ inputs.username }}
