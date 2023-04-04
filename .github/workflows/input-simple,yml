@@ -1,0 +1,22 @@
+name: workflow input simple
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'File'
+        default: '.'
+        required: true
+
+jobs:
+  - name: file select
+    runs-on: ubuntu-latest
+
+    env:
+      VALOR_INPUT: ${{ github.event.inputs.name }}
+
+    steps:
+    - name: select file and continue
+      run: |
+        echo "Hello ${{ github.event.inputs.name }}"
+        echo "Hello: ${{ env.VALOR_INPUT }}"
