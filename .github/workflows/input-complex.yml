@@ -18,4 +18,4 @@ jobs:
 
     steps:
       - name: Imprime la ruta dada por el usuario
-        run: echo La ruta a ejecutar es ${{ inputs.directorio }} ${{ inputs.archivos }}
+        run: echo La ruta a ejecutar es ${{ inputs.directorio }}${{ inputs.archivos }}
