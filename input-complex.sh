@@ -14,7 +14,7 @@ if [ "$2" != "*" ]; then
 fi
 
 if [ "$2" = "*" ]; then
-  for file in *.sql; do
+  for file in $1*.sql; do
     echo "$1$file"
   done
 fi
