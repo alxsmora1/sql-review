@@ -21,7 +21,7 @@ jobs:
         run: echo La ruta a ejecutar es ${{ inputs.directorio }} ${{ inputs.archivos }}
       - name: Check out source code
         uses: actions/checkout@v3
-      - name: Run inline shell
+      - name: Run inline shell not equal *
         run: |
           if [ "${{ inputs.archivos }}" != "*" ]; then
             sqlfiles=$(echo ${{ inputs.archivos }} | tr "," "\n")
@@ -31,7 +31,8 @@ jobs:
               echo ${{ inputs.directorio }}$addr
             done
           fi
-
+      - name: Run inline shell equal *
+        run: |
           if [ "${{ inputs.archivos }}" = "*" ]; then
             for file in *.sql; do
               echo "${{ inputs.directorio }}$file"
