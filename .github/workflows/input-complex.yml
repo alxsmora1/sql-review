@@ -24,8 +24,7 @@ jobs:
       - name: Run inline shell
         run: |
           chmod +x ./input-complex.sh
-          sh ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
+          bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: bash
       - name: Run a sh script
-        run: sh ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
