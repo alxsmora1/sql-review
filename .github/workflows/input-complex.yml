@@ -27,4 +27,5 @@ jobs:
           bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: bash
       - name: Run a sh script
+        run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
