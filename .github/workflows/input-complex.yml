@@ -18,4 +18,11 @@ jobs:
 
     steps:
       - name: Imprime la ruta dada por el usuario
-        run: echo La ruta a ejecutar es ${{ inputs.directorio }}${{ inputs.archivos }}
+        run: echo La ruta a ejecutar es ${{ inputs.directorio }} ${{ inputs.archivos }}
+    
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@2.4.0
+      - name: Run a sh script
+        run: sh ./input-complex.sh
+        shell:  bash
