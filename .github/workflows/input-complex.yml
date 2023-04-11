@@ -34,7 +34,7 @@ jobs:
       - name: Run inline shell equal *
         run: |
           if [ "${{ inputs.archivos }}" = "*" ]; then
-            for file in *.sql; do
+            for file in ${{ inputs.directorio }}*.sql; do
               echo "${{ inputs.directorio }}$file"
             done
           fi
