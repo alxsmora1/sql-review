@@ -28,7 +28,7 @@ jobs:
 
             for addr in $sqlfiles
             do
-              echo ${{ inputs.directorio }}$addr
+              echo "FOO=${{ inputs.directorio }}$addr" >> $GITHUB_ENV
             done
           fi
       - name: Run inline shell equal *
@@ -42,3 +42,7 @@ jobs:
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
+      - name: Run GITHUB_ENV
+        run: |
+          echo "${{ env.FOO }}"
+        shell: bash
