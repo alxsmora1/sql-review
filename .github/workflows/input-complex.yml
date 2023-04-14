@@ -3,7 +3,7 @@ on:
     inputs:
       directorio:
         description: 'Agrega la ruta del directorio con /'
-        default: 'dir/dir/example/'
+        default: './develop/postgres/'
         required: false
         type: string
       archivos:
