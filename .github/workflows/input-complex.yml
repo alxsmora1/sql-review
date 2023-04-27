@@ -34,13 +34,9 @@ jobs:
       - name: Run inline shell equal *
         run: |
           if [ "${{ inputs.archivos }}" = "*" ]; then
-          ARCHIVOSX=''
             for file in ${{ inputs.directorio }}*.sql; do
-              echo "${{ inputs.directorio }}$file"
-              ${ARCHIVOSX} += "cat ${{ inputs.directorio }}$file"
-              echo "FOO=${{ inputs.directorio }}$file" >> $GITHUB_ENV
+              echo "cat ${{ inputs.directorio }}$file"
             done
-          echo "${ARCHIVOSX}"
           fi
         shell: bash
       - name: Run a sh script
