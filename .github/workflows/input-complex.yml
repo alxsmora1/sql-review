@@ -52,9 +52,9 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           level: error
-          reporter: github-pr-review
+          reporter: github-check
           sqlfluff_version: "1.4.5"
-          sqlfluff_command: "fix"
+          sqlfluff_command: "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: 'general.sql'
           dialect: 'tsql'
