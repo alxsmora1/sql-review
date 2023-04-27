@@ -37,7 +37,7 @@ jobs:
           ARCHIVOSX=''
             for file in ${{ inputs.directorio }}*.sql; do
               echo "${{ inputs.directorio }}$file"
-              cat ${{ inputs.directorio }}$file >> $ARCHIVOSX
+              ${ARCHIVOSX} += "cat ${{ inputs.directorio }}$file"
               echo "FOO=${{ inputs.directorio }}$file" >> $GITHUB_ENV
             done
           echo "${ARCHIVOSX}"
