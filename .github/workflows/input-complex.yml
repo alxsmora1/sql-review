@@ -35,7 +35,7 @@ jobs:
         run: |
           if [ "${{ inputs.archivos }}" = "*" ]; then
             for file in ${{ inputs.directorio }}*.sql; do
-              echo "cat ${{ inputs.directorio }}$file"
+              cat $file
             done
           fi
         shell: bash
