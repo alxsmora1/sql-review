@@ -36,9 +36,12 @@ jobs:
           if [ "${{ inputs.archivos }}" = "*" ]; then
             for file in ${{ inputs.directorio }}*.sql; do
               cat $file
+              echo "GITHUB_SQL=$(cat $file)" >> $GITHUB_ENV
             done
           fi
         shell: bash
+      - name: Test
+        run: echo $GITHUB_SQL
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
