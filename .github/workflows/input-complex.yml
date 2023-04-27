@@ -42,7 +42,25 @@ jobs:
           cat general.sql
         shell: bash
       - name: Test
-        run: echo general.sql
+        run: cat general.sql
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
+      - name: 'sqlfluff y reviewdog' 
+        uses: yu-iskw/action-sqlfluff@v3
+        id: lint-sql
+        with:
+          github_token: ${{ secrets.github_token }}
+          level: error
+          reporter: github-pr-review
+          sqlfluff_version: "1.4.5"
+          sqlfluff_command: "fix"
+          config: "${{ github.workspace }}/.sqlfluff"
+          paths: 'general.sql'
+          dialect: 'tsql'
+          
+      - name: 'Show outputs (Optional)'
+        shell: bash
+        run: |
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'

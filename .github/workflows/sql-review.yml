@@ -8,7 +8,6 @@ jobs:
     steps:
       - name: 'Checkout code'
         uses: actions/checkout@v2
-
       - name: 'sqlfluff y reviewdog' 
         uses: yu-iskw/action-sqlfluff@v3
         id: lint-sql
