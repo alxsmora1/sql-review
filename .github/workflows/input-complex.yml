@@ -46,21 +46,8 @@ jobs:
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
-      - name: 'sqlfluff y reviewdog' 
-        uses: yu-iskw/action-sqlfluff@v3
-        id: lint-sql
+      - uses: bytebase/sql-review-action@main
         with:
-          github_token: ${{ secrets.github_token }}
-          level: error
-          reporter: github-check
-          sqlfluff_version: "1.4.5"
-          sqlfluff_command: "lint"
-          config: "${{ github.workspace }}/.sqlfluff"
-          paths: 'general.sql'
-          dialect: 'tsql'
-          
-      - name: 'Show outputs (Optional)'
-        shell: bash
-        run: |
-          echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
-          echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+          override-file-path: ./sql-review-override.yml
+          database-type: POSTGRES
+          file-pattern: general.sql
