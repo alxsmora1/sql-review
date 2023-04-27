@@ -33,18 +33,16 @@ jobs:
           fi
       - name: Run inline shell equal *
         run: |
+          touch general.sql
           if [ "${{ inputs.archivos }}" = "*" ]; then
             for file in ${{ inputs.directorio }}*.sql; do
-              echo "GITHUB_SQL=$(cat $file)" >> $GITHUB_ENV
+              cat $file >> general.sql
             done
           fi
+          echo general.sql
         shell: bash
       - name: Test
-        run: echo $GITHUB_SQL
+        run: echo general.sql
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
-      - name: Run GITHUB_ENV
-        run: |
-          echo "${{ env.FOO }}"
-        shell: bash
