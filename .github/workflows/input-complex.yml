@@ -39,7 +39,7 @@ jobs:
               cat $file >> general.sql
             done
           fi
-          echo general.sql
+          cat general.sql
         shell: bash
       - name: Test
         run: echo general.sql
