@@ -40,7 +40,7 @@ jobs:
               cat ${{ inputs.directorio }}$file >> $ARCHIVOSX
               echo "FOO=${{ inputs.directorio }}$file" >> $GITHUB_ENV
             done
-          echo "$ARCHIVOSX"
+          echo "${ARCHIVOSX}"
           fi
         shell: bash
       - name: Run a sh script
