@@ -35,7 +35,6 @@ jobs:
         run: |
           if [ "${{ inputs.archivos }}" = "*" ]; then
             for file in ${{ inputs.directorio }}*.sql; do
-              cat $file
               echo "GITHUB_SQL=$(cat $file)" >> $GITHUB_ENV
             done
           fi
