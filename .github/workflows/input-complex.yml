@@ -46,4 +46,3 @@ jobs:
       - name: Run a sh script
         run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
         shell: pwsh
-        
