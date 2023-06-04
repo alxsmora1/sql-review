@@ -1,0 +1,29 @@
+name: sqlfluff with reviewdog
+on:
+  pull_request:
+jobs:
+  test-check:
+    name: runner / sqlfluff (github-check)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v2
+
+      - name: 'sqlfluff y reviewdog' 
+        uses: yu-iskw/action-sqlfluff@v3
+        id: lint-sql
+        with:
+          github_token: ${{ secrets.github_token }}
+          level: error
+          reporter: github-pr-review
+          sqlfluff_version: "1.4.5"
+          sqlfluff_command: "fix"
+          config: "${{ github.workspace }}/.sqlfluff"
+          paths: '${{ github.workspace }}/develop/scripts'
+          dialect: 'tsql'
+          
+      - name: 'Show outputs (Optional)'
+        shell: bash
+        run: |
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
+          echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
