@@ -5,9 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     name: SQL Review
     steps:
-      - uses: actions/checkout@v3
-      - name: Check SQL
-        uses: bytebase/sql-review-action@main
+      - name: 'Checkout code'
+        uses: actions/checkout@v2
+      - name: 'sqlfluff y reviewdog' 
+        uses: yu-iskw/action-sqlfluff@v3
+        id: lint-sql
         with:
           override-file-path: ./sql-review-override.yml
           database-type: Snowflake

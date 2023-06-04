@@ -1,0 +1,49 @@
+on:
+  workflow_dispatch:
+    inputs:
+      directorio:
+        description: 'Agrega la ruta del directorio con /'
+        default: './develop/postgres/'
+        required: false
+        type: string
+      archivos:
+        description: 'Agrega los ficheros o el comodin'
+        default: '*'
+        required: false
+        type: string
+
+jobs:
+  print-path:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprime la ruta dada por el usuario
+        run: echo La ruta a ejecutar es ${{ inputs.directorio }} ${{ inputs.archivos }}
+      - name: Check out source code
+        uses: actions/checkout@v3
+      - name: Run inline shell not equal *
+        run: |
+          if [ "${{ inputs.archivos }}" != "*" ]; then
+            sqlfiles=$(echo ${{ inputs.archivos }} | tr "," "\n")
+
+            for addr in $sqlfiles
+            do
+              echo "FOO=${{ inputs.directorio }}$addr" >> $GITHUB_ENV
+            done
+          fi
+      - name: Run inline shell equal *
+        run: |
+          touch general.sql
+          if [ "${{ inputs.archivos }}" = "*" ]; then
+            for file in ${{ inputs.directorio }}*.sql; do
+              cat $file >> general.sql
+            done
+          fi
+          cat general.sql
+        shell: bash
+      - name: Test
+        run: cat general.sql
+      - name: Run a sh script
+        run: bash ./input-complex.sh "${{ inputs.directorio }}" "${{ inputs.archivos }}"
+        shell: pwsh
+        
