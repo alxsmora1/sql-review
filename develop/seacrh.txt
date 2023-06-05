@@ -1,0 +1,4 @@
+grep -oP '(?<=AssemblyVersion\(\").*(?=\"\)\])' assembly.cs
+
+
+ grep -oP '(?<=<Version>).*(?=</Version>)' solution.xml
