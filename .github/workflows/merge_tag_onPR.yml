@@ -10,5 +10,6 @@ jobs:
       - name: 'Tag ARMTemplate'
         run: |
             commit=$(git rev-parse HEAD)
-            echo $commit
-            echo 'Hello'
+            tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+            echo 'Commit: ' $commit
+            echo 'Tag: ' $tag
