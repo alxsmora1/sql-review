@@ -11,5 +11,5 @@ jobs:
         run: |
             commit=$(git rev-parse HEAD)
             tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-            echo 'Commit: ' $commit
-            echo 'Tag: ' $tag
+            echo $commit
+            echo $tag
